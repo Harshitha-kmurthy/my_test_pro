@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshitha K | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { line-height: 1.6; color: #333; scroll-behavior: smooth; }
+
+/* Navbar */
+.navbar { display: flex; justify-content: space-around; align-items: center; height: 80px; background: #2c3e50; color: #fff; position: sticky; top: 0; z-index: 1000; }
+.logo { font-size: 1.5rem; font-weight: bold; }
+.logo span { color: #3498db; }
+.nav-links { display: flex; list-style: none; }
+.nav-links li a { color: white; text-decoration: none; padding: 0 20px; transition: 0.3s; }
+.nav-links li a:hover { color: #3498db; }
+
+/* Hero Section */
+.hero { height: 90vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-size: cover; display: flex; justify-content: center; align-items: center; text-align: center; color: white; }
+.hero h1 { font-size: 3.5rem; }
+.hero span { color: #3498db; }
+.btn { display: inline-block; margin-top: 20px; padding: 10px 30px; background: #3498db; color: white; text-decoration: none; border-radius: 5px; }
+
+/* Sections */
+section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+h2 { text-align: center; margin-bottom: 40px; font-size: 2rem; border-bottom: 3px solid #3498db; width: fit-content; margin-left: auto; margin-right: auto; padding-bottom: 10px; }
+
+.skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.skill-card { background: #f4f4f4; padding: 20px; border-radius: 8px; text-align: center; transition: 0.3s; }
+.skill-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+.project-card { background: #fff; border: 1px solid #ddd; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+/* Responsive */
+.burger { display: none; cursor: pointer; }
+.burger div { width: 25px; height: 3px; background-color: white; margin: 5px; }
+
+@media screen and (max-width: 768px) {
+    .nav-links { position: absolute; right: 0; height: 92vh; top: 8vh; background: #2c3e50; flex-direction: column; align-items: center; width: 50%; transform: translateX(100%); transition: 0.5s ease-in; }
+    .nav-links li { opacity: 0; }
+    .burger { display: block; }
+}
+.nav-active { transform: translateX(0%); }
+</style>
+<body>
+    <nav class="navbar">
+        <div class="logo">Harshitha<span>.K</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="{% url 'contact'%}">Contact</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+           <h1>Hi, I'm <span>{{ name }}</span></h1>
+                    <p>{{ role }}</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="container">
+            <p>I am a motivated MCA student at Maharaja Institute of Technology with a strong interest in software development and problem-solving[cite: 4, 7]. I am eager to apply my programming skills to real-world projects and gain industry experience[cite: 5].</p>
+            <div class="edu-grid">
+                <div class="edu-item">
+                    <h4>MCA (2024-2026)</h4>
+                    <p>Maharaja Institute of Technology, Mysore [cite: 7, 8]</p>
+                </div>
+                <div class="edu-item">
+                    <h4>BSc Pcs (2021-2024)</h4>
+                    <p>JSS College for Women | CGPA: 8.35 [cite: 9, 10, 11]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+      <div class="skills-container">
+
+    {% for skill in skills %}
+        <div class="skill-card">
+            <h3>{{ skill.title }}</h3>
+            <p>{{ skill.items }}</p>
+        </div>
+    {% endfor %}
+
+</div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Project</h2>
+        <div class="project-card">
+            <h3>Blog Application</h3>
+            <p>A full-stack platform built with Django featuring user authentication, CRUD operations, and profile management[cite: 22, 24, 25, 27].</p>
+            <p><strong>Tech:</strong> Python, Django, MySQL, Bootstrap [cite: 29]</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-info">
+            <p>Email: Kharshitha724@gmail.com [cite: 2]</p>
+            <p>Phone: +91-8660418885 [cite: 2]</p>
+            <p>Location: Mysore [cite: 2]</p>
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/harshitha-k-8b592135b">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Harshitha K. All Rights Reserved.</p>
+    </footer>
+
+    <script> 
+        const navSlide = () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+
+    burger.addEventListener('click', () => {
+        // Toggle Nav
+        nav.classList.toggle('nav-active');
+
+        // Animate Links
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
+
+        // Burger Animation
+        burger.classList.toggle('toggle');
+    });
+}
+navSlide();
+    </script>
+</body>
+
+</html>
